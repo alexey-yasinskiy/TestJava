@@ -1,13 +1,13 @@
 package com.company;
 
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        String cont;
+        /*String cont;
         String object;
 
         while (true) {
@@ -38,7 +38,7 @@ public class Main {
             if (!cont.equals("y")) {
                 break;
             }
-        }
+        }*/
         /*UserInfo userInfo = new UserInfo();
         String cont;
         while (true) {
@@ -54,6 +54,22 @@ public class Main {
             }
         }*/
 
+        List<String> list = Arrays.asList("Item1", "item2", "item3");
+        for (String item : list) {
+            System.out.println(item);
+        }
+
+        Set<String> set = new HashSet<String>();
+        for(int i = 0; i < 3; i++) {
+            set.add("item" + i + "set");
+        }
+        for (String item : set) {
+            System.out.println(item);
+        }
+
+        /*Map<String, String> map = new HashMap<String, String>() {
+            key1 : "test"
+        };*/
     }
 
     public static void firstMethod() {
