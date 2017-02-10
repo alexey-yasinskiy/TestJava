@@ -54,7 +54,7 @@ public class Main {
             }
         }*/
 
-        List<String> list = Arrays.asList("Item1", "item2", "item3");
+        /*List<String> list = Arrays.asList("Item1", "item2", "item3");
         for (String item : list) {
             System.out.println(item);
         }
@@ -66,10 +66,48 @@ public class Main {
         for (String item : set) {
             System.out.println(item);
         }
-
+*/
         /*Map<String, String> map = new HashMap<String, String>() {
-            key1 : "test"
+
         };*/
+
+        int count5 = 0;
+        int unique = 0;
+        int countMatch = 0;
+
+        List<Integer> listRand = new ArrayList<>();
+        List<Integer> listIndex = new ArrayList<>();
+        Map<Integer, List> listOfUnique = new HashMap<>();
+
+        Random random = new Random();
+
+        for(int i = 0; i < 20; i++) {
+            listRand.add(random.nextInt(10) + 1);
+        }
+
+        int index = 0;
+        for (Integer item : listRand) {
+            System.out.print(item + "  ");
+            if (item > 5) count5++;
+
+            for (Integer itemUnique : listRand) {
+                if (item.equals(itemUnique)) countMatch++;
+            }
+
+            if (countMatch < 2) unique++;
+            else {
+                listIndex.add(index);
+            }
+            countMatch = 0;
+            index++;
+        }
+
+        System.out.println("\nBigger than 5 = " + count5);
+        System.out.println("Unique = " + unique);
+
+        for (Integer itemIndex : listIndex) {
+            System.out.print("[" + itemIndex + "]   ");
+        }
     }
 
     public static void firstMethod() {
