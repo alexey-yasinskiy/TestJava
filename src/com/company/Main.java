@@ -77,6 +77,7 @@ public class Main {
 
         List<Integer> listRand = new ArrayList<>();
         List<Integer> listIndex = new ArrayList<>();
+        List<Integer> nonUniqueIndex = new ArrayList<>();
         Map<Integer, List> listOfUnique = new HashMap<>();
 
         Random random = new Random();
@@ -86,18 +87,29 @@ public class Main {
         }
 
         int index = 0;
+        int index2 = 0;
         for (Integer item : listRand) {
             System.out.print(item + "  ");
             if (item > 5) count5++;
 
             for (Integer itemUnique : listRand) {
-                if (item.equals(itemUnique)) countMatch++;
+                if (item.equals(itemUnique)) {
+                    countMatch++;
+                    nonUniqueIndex.add(index2);
+                }
+                index2++;
             }
 
+            index2 = 0;
             if (countMatch < 2) unique++;
             else {
                 listIndex.add(index);
+                if (!listOfUnique.containsKey(item)) {
+                    listOfUnique.put(item, new ArrayList(nonUniqueIndex));
+                }
             }
+
+            nonUniqueIndex.clear();
             countMatch = 0;
             index++;
         }
@@ -108,6 +120,8 @@ public class Main {
         for (Integer itemIndex : listIndex) {
             System.out.print("[" + itemIndex + "]   ");
         }
+
+        System.out.println("\n" + listOfUnique.toString());
     }
 
     public static void firstMethod() {
